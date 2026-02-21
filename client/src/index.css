@@ -1,0 +1,99 @@
+/* =========================
+   LIGHT MODE (Default)
+========================= */
+:root {
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  --text: #0f172a;
+  --text-muted: #64748b;
+
+  --accent: #dc2626;
+  --accent-hover: #b91c1c;
+  --accent-soft: rgba(220, 38, 38, 0.1);
+
+  --nepal-green: #047857;
+  --nepal-green-soft: rgba(4, 120, 87, 0.15);
+
+  --border: #e2e8f0;
+
+  --success: #10b981;
+  --error: #ef4444;
+
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-devanagari: 'Noto Sans Devanagari', var(--font-sans);
+}
+
+/* =========================
+   DARK MODE
+========================= */
+[data-theme="dark"] {
+  --bg: #0f1419;
+  --bg-card: #1a2332;
+  --bg-input: #243447;
+  --text: #f0f4f8;
+  --text-muted: #8b98a5;
+
+  --accent: #dc2626;
+  --accent-hover: #b91c1c;
+  --accent-soft: rgba(220, 38, 38, 0.15);
+
+  --nepal-green: #047857;
+  --nepal-green-soft: rgba(4, 120, 87, 0.2);
+
+  --border: #2d3d50;
+
+  --success: #10b981;
+  --error: #ef4444;
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  background: var(--bg-input);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.script-ne {
+  font-family: var(--font-devanagari);
+}

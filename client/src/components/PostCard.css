@@ -1,0 +1,131 @@
+.post-card {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s;
+}
+
+.post-card:hover {
+  border-color: var(--accent-soft);
+}
+
+.post-card-avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-input);
+}
+
+.post-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.post-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-card-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.post-card-name {
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-card-name:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.post-card-username {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.post-card-time {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.post-card-delete {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.2rem;
+}
+
+.post-card-delete:hover {
+  color: var(--error);
+}
+
+.post-card-content {
+  display: block;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+
+.post-card-content:hover {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.post-card-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+}
+
+.action-btn:hover {
+  color: var(--text);
+}
+
+.comment-btn {
+  text-decoration: none;
+}
+
+.comment-btn:hover {
+  text-decoration: none;
+}
+
+.like-btn.liked {
+  color: var(--accent);
+}

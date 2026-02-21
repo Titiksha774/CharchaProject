@@ -1,0 +1,70 @@
+.profile-loading,
+.profile-error {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+.profile-error a {
+  color: var(--accent);
+}
+
+.profile-header {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.profile-avatar {
+  margin: 0 auto 0.75rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-input);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-large {
+  font-size: 2rem;
+}
+
+.profile-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.profile-username {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.profile-posts-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.profile-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem;
+  font-family: var(--font-devanagari);
+}

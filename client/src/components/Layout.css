@@ -1,0 +1,155 @@
+/* =========================
+   Loading Screen
+========================= */
+.loading-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text-muted);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* =========================
+   Layout Wrapper
+========================= */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  transition: background 0.3s ease;
+}
+
+/* =========================
+   Header / Navbar
+========================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.75rem 1.5rem;
+
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* =========================
+   Logo
+========================= */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.logo-icon {
+  font-family: var(--font-devanagari);
+  color: var(--accent);
+}
+
+.logo-text {
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   Navigation
+========================= */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* =========================
+   Register Button
+========================= */
+.btn-register {
+  background: var(--accent) !important;
+  color: white !important;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.btn-register:hover {
+  background: var(--accent-hover) !important;
+  color: white !important;
+}
+
+/* =========================
+   Logout Button
+========================= */
+.btn-logout {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.btn-logout:hover {
+  color: var(--error);
+}
+
+/* =========================
+   Theme Toggle Button
+========================= */
+.theme-toggle {
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+
+  background: var(--bg-input);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* =========================
+   Main Content
+========================= */
+.main {
+  flex: 1;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
