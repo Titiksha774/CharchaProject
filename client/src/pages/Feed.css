@@ -114,3 +114,16 @@
   color: var(--text);
   border-color: var(--accent);
 }
+
+.feed-join-box {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.feed-join-box p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}

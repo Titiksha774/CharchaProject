@@ -1,33 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Layout.css';
 
 export default function Layout() {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const { user } = useAuth();
 
   // 🌗 Theme State
   const [theme, setTheme] = useState('light');
 
-  // Load saved theme on first render
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
-  // Toggle Theme
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-  };
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
   };
 
   return (
@@ -39,29 +31,20 @@ export default function Layout() {
         </Link>
 
         <nav className="nav">
-          {/* 🌙 Theme Toggle Button */}
+          <Link to="/">Feed</Link>
+
+          {user && (
+            <Link to={`/u/${user.username}`}>Profile</Link>
+          )}
+
+          {/* 🌙 Theme Toggle */}
           <button
             type="button"
             onClick={toggleTheme}
             className="theme-toggle"
           >
-            {theme === 'dark' ? '☀ Light' : '🌙 Dark'}
+            {theme === 'dark' ? '☀' : '🌙'}
           </button>
-
-          {user ? (
-            <>
-              <Link to="/">Feed</Link>
-              <Link to={`/u/${user.username}`}>Profile</Link>
-              <button type="button" className="btn-logout" onClick={handleLogout}>
-                Log out
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/login">Log in</Link>
-              <Link to="/register" className="btn-register">Sign up</Link>
-            </>
-          )}
         </nav>
       </header>
 
