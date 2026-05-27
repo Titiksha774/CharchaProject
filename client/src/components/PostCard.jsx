@@ -34,7 +34,7 @@ export default function PostCard({ post, onLike, onDelete }) {
 
   const handleCommentClick = (e) => {
     if (!user) {
-      e.preventDefault(); // stop navigation
+      e.preventDefault();
       navigate('/login');
     }
   };
@@ -77,14 +77,26 @@ export default function PostCard({ post, onLike, onDelete }) {
               onClick={handleDelete}
               title="Delete"
             >
-              ×
+              Delete
             </button>
           )}
         </div>
 
-        <Link to={`/post/${post.id}`} className="post-card-content">
-          {post.content}
-        </Link>
+        {post.content && (
+          <Link to={`/post/${post.id}`} className="post-card-content">
+            {post.content}
+          </Link>
+        )}
+
+        {post.mediaUrl && (
+          <div className="post-card-media">
+            {post.mediaType === 'VIDEO' ? (
+              <video src={post.mediaUrl} controls preload="metadata" />
+            ) : (
+              <img src={post.mediaUrl} alt="" loading="lazy" />
+            )}
+          </div>
+        )}
 
         <div className="post-card-actions">
           <Link
@@ -93,7 +105,7 @@ export default function PostCard({ post, onLike, onDelete }) {
             title="Comment"
             onClick={handleCommentClick}
           >
-            💬 {post.commentCount ?? 0}
+            Comment {post.commentCount ?? 0}
           </Link>
 
           <button
@@ -102,7 +114,7 @@ export default function PostCard({ post, onLike, onDelete }) {
             onClick={handleLike}
             title="Like"
           >
-            {post.likedByMe ? '❤️' : '🤍'} {post.likeCount ?? 0}
+            {post.likedByMe ? 'Liked' : 'Like'} {post.likeCount ?? 0}
           </button>
         </div>
       </div>

@@ -27,7 +27,16 @@ router.post('/register', async (req, res, next) => {
         passwordHash,
         displayName: displayName || username,
       },
-      select: { id: true, email: true, username: true, displayName: true, avatarUrl: true },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        displayName: true,
+        avatarUrl: true,
+        bio: true,
+        location: true,
+        website: true,
+      },
     });
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
     res.status(201).json({ user, token });
@@ -54,6 +63,9 @@ router.post('/login', async (req, res, next) => {
         username: user.username,
         displayName: user.displayName,
         avatarUrl: user.avatarUrl,
+        bio: user.bio,
+        location: user.location,
+        website: user.website,
       },
       token,
     });

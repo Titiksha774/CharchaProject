@@ -1,16 +1,18 @@
 .post-card {
   display: flex;
-  gap: 0.75rem;
-  padding: 1rem;
+  gap: var(--space-2);
+  padding: var(--space-3);
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  margin-bottom: 0.75rem;
-  transition: border-color 0.2s;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-2);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s, transform 0.2s;
 }
 
 .post-card:hover {
-  border-color: var(--accent-soft);
+  border-color: rgba(220, 38, 38, 0.35);
+  transform: translateY(-1px);
 }
 
 .post-card-avatar {
@@ -34,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 1.1rem;
   color: var(--accent);
   background: var(--accent-soft);
@@ -76,14 +78,17 @@
 
 .post-card-delete {
   margin-left: auto;
-  color: var(--text-muted);
-  font-size: 1.25rem;
+  color: var(--error);
+  font-size: 0.8rem;
+  font-weight: 700;
   line-height: 1;
-  padding: 0.2rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.1);
 }
 
 .post-card-delete:hover {
-  color: var(--error);
+  background: rgba(239, 68, 68, 0.18);
 }
 
 .post-card-content {
@@ -92,7 +97,7 @@
   white-space: pre-wrap;
   word-break: break-word;
   text-decoration: none;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-2);
 }
 
 .post-card-content:hover {
@@ -100,9 +105,27 @@
   color: var(--text);
 }
 
+.post-card-media {
+  overflow: hidden;
+  margin: 0 0 var(--space-2);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.post-card-media img,
+.post-card-media video {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  background: #020617;
+}
+
 .post-card-actions {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-1);
+  flex-wrap: wrap;
 }
 
 .action-btn {
@@ -111,11 +134,16 @@
   gap: 0.35rem;
   color: var(--text-muted);
   font-size: 0.9rem;
-  padding: 0.25rem 0;
+  font-weight: 800;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
 }
 
 .action-btn:hover {
   color: var(--text);
+  border-color: var(--accent);
 }
 
 .comment-btn {

@@ -2,20 +2,38 @@
    LIGHT MODE (Default)
 ========================= */
 :root {
-  --bg: #f8fafc;
+  --ratio: 1.618;
+  --space-1: 0.5rem;
+  --space-2: 0.8rem;
+  --space-3: 1.3rem;
+  --space-4: 2.1rem;
+  --space-5: 3.4rem;
+
+  --bg: #f5f7fb;
   --bg-card: #ffffff;
   --bg-input: #f1f5f9;
+  --bg-subtle: #f8fafc;
+  --bg-elevated: rgba(255, 255, 255, 0.82);
   --text: #0f172a;
   --text-muted: #64748b;
+  --text-soft: #94a3b8;
 
   --accent: #dc2626;
   --accent-hover: #b91c1c;
   --accent-soft: rgba(220, 38, 38, 0.1);
+  --accent-ring: rgba(220, 38, 38, 0.24);
 
   --nepal-green: #047857;
   --nepal-green-soft: rgba(4, 120, 87, 0.15);
+  --gold: #b7791f;
+  --gold-soft: rgba(183, 121, 31, 0.13);
 
   --border: #e2e8f0;
+  --shadow-sm: 0 12px 30px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 18px 54px rgba(15, 23, 42, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 
   --success: #10b981;
   --error: #ef4444;
@@ -28,20 +46,28 @@
    DARK MODE
 ========================= */
 [data-theme="dark"] {
-  --bg: #0f1419;
-  --bg-card: #1a2332;
-  --bg-input: #243447;
+  --bg: #0c1118;
+  --bg-card: #151d29;
+  --bg-input: #202b3a;
+  --bg-subtle: #101722;
+  --bg-elevated: rgba(21, 29, 41, 0.82);
   --text: #f0f4f8;
   --text-muted: #8b98a5;
+  --text-soft: #64748b;
 
   --accent: #dc2626;
   --accent-hover: #b91c1c;
   --accent-soft: rgba(220, 38, 38, 0.15);
+  --accent-ring: rgba(220, 38, 38, 0.28);
 
   --nepal-green: #047857;
   --nepal-green-soft: rgba(4, 120, 87, 0.2);
+  --gold: #d69e2e;
+  --gold-soft: rgba(214, 158, 46, 0.16);
 
   --border: #2d3d50;
+  --shadow-sm: 0 14px 34px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 20px 58px rgba(0, 0, 0, 0.3);
 
   --success: #10b981;
   --error: #ef4444;
@@ -63,7 +89,19 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.5;
+  letter-spacing: 0;
   transition: background 0.3s ease, color 0.3s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(220, 38, 38, 0.06), transparent 32%),
+    linear-gradient(315deg, rgba(4, 120, 87, 0.08), transparent 36%);
+  z-index: -1;
 }
 
 #root {
@@ -92,6 +130,13 @@ textarea {
   background: var(--bg-input);
   color: var(--text);
   border: 1px solid var(--border);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
 }
 
 .script-ne {

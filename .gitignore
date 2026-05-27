@@ -21,3 +21,6 @@ Thumbs.db
 # Build folders
 dist/
 build/
+
+# User uploaded media
+server/uploads/

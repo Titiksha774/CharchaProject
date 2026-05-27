@@ -13,7 +13,16 @@ export async function authMiddleware(req, res, next) {
     const decoded = jwt.verify(token, JWT_SECRET);
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
-      select: { id: true, email: true, username: true, displayName: true, avatarUrl: true },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        displayName: true,
+        avatarUrl: true,
+        bio: true,
+        location: true,
+        website: true,
+      },
     });
     if (!user) return res.status(401).json({ error: 'User not found' });
     req.user = user;

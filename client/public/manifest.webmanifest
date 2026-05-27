@@ -1,0 +1,20 @@
+{
+  "name": "Charcha",
+  "short_name": "Charcha",
+  "description": "A Nepali social media platform for posts, friends, and private messages.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["social", "communication"]
+}

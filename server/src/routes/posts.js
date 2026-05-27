@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, getOptionalUser } from '../middleware/auth.js';
+import { cleanText, parseMediaInput } from '../lib/validation.js';
 
 const router = Router();
 
@@ -32,6 +33,8 @@ router.get('/', async (req, res, next) => {
     const mapped = items.map((p) => ({
       id: p.id,
       content: p.content,
+      mediaUrl: p.mediaUrl,
+      mediaType: p.mediaType,
       createdAt: p.createdAt,
       user: p.user,
       commentCount: p._count.comments,
@@ -47,12 +50,18 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', authMiddleware, async (req, res, next) => {
   try {
-    const { content } = req.body;
-    if (!content || typeof content !== 'string' || content.trim().length === 0) {
-      return res.status(400).json({ error: 'Post content is required' });
+    const content = cleanText(req.body.content, 500);
+    const media = parseMediaInput(req.body.mediaUrl, req.body.mediaType);
+    if (!content && !media.mediaUrl) {
+      return res.status(400).json({ error: 'Post text or media is required' });
     }
     const post = await prisma.post.create({
-      data: { content: content.trim(), userId: req.user.id },
+      data: {
+        content,
+        mediaUrl: media.mediaUrl,
+        mediaType: media.mediaType,
+        userId: req.user.id,
+      },
       include: {
         user: {
           select: { id: true, username: true, displayName: true, avatarUrl: true },
@@ -63,6 +72,8 @@ router.post('/', authMiddleware, async (req, res, next) => {
     res.status(201).json({
       id: post.id,
       content: post.content,
+      mediaUrl: post.mediaUrl,
+      mediaType: post.mediaType,
       createdAt: post.createdAt,
       user: post.user,
       commentCount: post._count.comments,
@@ -93,6 +104,8 @@ router.get('/:id', async (req, res, next) => {
     res.json({
       id: post.id,
       content: post.content,
+      mediaUrl: post.mediaUrl,
+      mediaType: post.mediaType,
       createdAt: post.createdAt,
       user: post.user,
       commentCount: post._count.comments,
@@ -154,14 +167,14 @@ router.get('/:id/comments', async (req, res, next) => {
 
 router.post('/:id/comments', authMiddleware, async (req, res, next) => {
   try {
-    const { content } = req.body;
-    if (!content || typeof content !== 'string' || content.trim().length === 0) {
+    const content = cleanText(req.body.content, 500);
+    if (!content) {
       return res.status(400).json({ error: 'Comment content is required' });
     }
     const post = await prisma.post.findUnique({ where: { id: req.params.id } });
     if (!post) return res.status(404).json({ error: 'Post not found' });
     const comment = await prisma.comment.create({
-      data: { content: content.trim(), postId: req.params.id, userId: req.user.id },
+      data: { content, postId: req.params.id, userId: req.user.id },
       include: {
         user: {
           select: { id: true, username: true, displayName: true, avatarUrl: true },

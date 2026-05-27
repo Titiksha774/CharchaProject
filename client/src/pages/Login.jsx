@@ -34,9 +34,21 @@ export default function Login() {
 
   return (
     <div className="auth-page">
-      <div className="auth-card">
-        <h1 className="auth-title script-ne">चर्चामा लगइन गर्नुहोस्</h1>
-        <p className="auth-subtitle">Charcha — नेपाली सामाजिक मञ्च</p>
+      <section className="auth-visual">
+        <Link to="/" className="auth-logo">
+          <span>च</span>
+          <strong>Charcha</strong>
+        </Link>
+        <div>
+          <p className="script-ne">नमस्ते</p>
+          <h1>Come back to the conversation.</h1>
+          <p>Post updates, message friends, and keep your Nepali community close.</p>
+        </div>
+      </section>
+
+      <section className="auth-card">
+        <h2 className="auth-title script-ne">चर्चामा लगइन गर्नुहोस्</h2>
+        <p className="auth-subtitle">Welcome back to Charcha.</p>
         {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">
           <label>
@@ -56,7 +68,7 @@ export default function Login() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder="Enter your password"
               required
               autoComplete="current-password"
             />
@@ -68,7 +80,7 @@ export default function Login() {
         <p className="auth-footer">
           No account? <Link to="/register">Sign up</Link>
         </p>
-      </div>
+      </section>
     </div>
   );
 }

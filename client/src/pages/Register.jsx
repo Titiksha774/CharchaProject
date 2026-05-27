@@ -41,9 +41,21 @@ export default function Register() {
 
   return (
     <div className="auth-page">
-      <div className="auth-card">
-        <h1 className="auth-title script-ne">खाता खोल्नुहोस्</h1>
-        <p className="auth-subtitle">Join Charcha</p>
+      <section className="auth-visual">
+        <Link to="/" className="auth-logo">
+          <span>च</span>
+          <strong>Charcha</strong>
+        </Link>
+        <div>
+          <p className="script-ne">स्वागत छ</p>
+          <h1>Start your corner of Charcha.</h1>
+          <p>Create a profile, find friends, and share what matters to you.</p>
+        </div>
+      </section>
+
+      <section className="auth-card">
+        <h2 className="auth-title script-ne">खाता खोल्नुहोस्</h2>
+        <p className="auth-subtitle">Join Charcha in a few seconds.</p>
         {error && <div className="auth-error">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">
           <label>
@@ -86,7 +98,7 @@ export default function Register() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder="At least 6 characters"
               required
               minLength={6}
               autoComplete="new-password"
@@ -99,7 +111,7 @@ export default function Register() {
         <p className="auth-footer">
           Already have an account? <Link to="/login">Log in</Link>
         </p>
-      </div>
+      </section>
     </div>
   );
 }
