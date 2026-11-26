@@ -49,7 +49,7 @@ You only need to do this once.
 1. Open **PowerShell** or **Command Prompt**.
 2. Go to the project folder. Type (use your real path):
    ```
-   cd "c:\Users\titiksha raj pandey\OneDrive\Documents\CharchaProject"
+   cd CharchaProject
    ```
 3. Run:
    ```
